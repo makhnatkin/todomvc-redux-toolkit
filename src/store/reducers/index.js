@@ -1,10 +1,14 @@
 import { combineReducers } from "redux";
 import todos from "../slices/todosSlice";
-import filter from "../slices/filterSlice";
+import filters from "../slices/filtersSlice";
+import selectedFilterId from "../slices/selectedFilterIdSlice";
+import completedTodosIds from "../slices/completedTodosIdsSlice";
 
 const reducers = combineReducers({
   todos,
-  filter
+  filters,
+  selectedFilterId,
+  completedTodosIds,
 });
 
 export default reducers;

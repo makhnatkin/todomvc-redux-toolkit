@@ -1,9 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 
-const TodoItem = ({ onToggleItem, onDeleteItem, todo }) => {
-  const { text, completed } = todo;
-
+const TodoItem = ({ onToggleItem, onDeleteItem, text, completed }) => {
   return (
     <li
       className={classnames({
