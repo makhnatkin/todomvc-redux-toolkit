@@ -13,7 +13,7 @@ const Header = () => {
         return;
       }
 
-      const action = addTodo({
+        const action = addTodo({
           id: new Date().getTime().toString(),
           text: value
       })

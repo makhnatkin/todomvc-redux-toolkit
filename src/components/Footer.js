@@ -1,22 +1,22 @@
 import React from "react";
 import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter } from "../store/slices/filterSlice";
+import { setSelectedFilter } from "../store/slices/selectedFilterIdSlice";
 
-import { getFilter, getActiveTodos, getItemWord } from '../store/selectors'
-
-const FILTER_TITLES = ["All", "Active", "Completed"];
+import { getFilters, getItemWord, getSelectedFilterId, getFilteredTodos } from '../store/selectors'
 
 const Footer = () => {
 
   // get
-  const filter = useSelector(getFilter);
-  const activeTodos = useSelector(getActiveTodos);
+  const filters = useSelector(getFilters);
+  const selectedFilterId = useSelector(getSelectedFilterId);
+
+  const todos = useSelector(getFilteredTodos);
   const itemWord = useSelector(getItemWord);
 
   // set
   const dispatch = useDispatch();
-  const createHandleFilterClick = filterTitle => () => dispatch(setFilter(filterTitle));
+  const createHandleFilterClick = id => () => dispatch(setSelectedFilter(id));
 
   return (
     <footer
@@ -24,17 +24,17 @@ const Footer = () => {
       style={{ display: "flex", justifyContent: "space-between" }}
     >
       <span className="todo-count">
-        <strong>{activeTodos.length || "No"}</strong> {itemWord} left
+        <strong>{todos.length || "No"}</strong> {itemWord} left
       </span>
       <ul className="filters" style={{ position: "relative" }}>
-        {FILTER_TITLES.map((filterTitle) => (
-          <li key={filterTitle}>
+        {filters.map(({ id, title }) => (
+          <li key={id}>
             <a
-              className={classnames({ selected: filterTitle === filter })}
+              className={classnames({ selected: id === selectedFilterId })}
               style={{ cursor: "pointer" }}
-              onClick={createHandleFilterClick(filterTitle)}
+              onClick={createHandleFilterClick(id)}
             >
-              {filterTitle}
+              {title}
             </a>
           </li>
         ))}

@@ -2,20 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [];
 
+// TODO: дописать
 const todosSlice = createSlice({
-  name: "todos",
+  name: "errors",
   initialState,
   reducers: {
-    addTodo(state, { payload }) {
-      const { id, text } = payload;
-      return [
-          ...state,
-        {id, text}
-      ];
+    addError(state, action) {
+      const { id, text } = action.payload;
+      state.data.push({ id, text, completed: false });
     },
-    deleteTodo(state, { payload }) {
-      return state.filter((todo) => todo.id !== payload);
-    }
   }
 });
 

@@ -33,3 +33,61 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+
+```angular2html
+
+// const todos2 = ['купить хлеб', 'убрать дома'];
+
+// это правильно:
+// данные
+// const todos = [{
+//   id: 'd1396068-82b9-4b58-99fa-37252919fd94',
+//   title: 'купить хлеб'
+// }, {
+//   id: '38653fdc-17b6-422c-937b-4fe2499fc0d3',
+//   title: 'убрать дома'
+// }];
+
+// состояние этих данных 
+// selectedTodos = ['d1396068-82b9-4b58-99fa-37252919fd94']
+
+
+// это не очень правильно:
+// тут есть данные и состояние этих данных вместе
+const todos = [{
+  id: 'd1396068-82b9-4b58-99fa-37252919fd94',
+  title: 'купить хлеб',
+  selected: true
+}, {
+  id: '38653fdc-17b6-422c-937b-4fe2499fc0d3',
+  title: 'убрать дома',
+  selected: false
+}];
+
+
+
+// const count = todos.length;
+
+// checkbox
+// value 'd1396068-82b9-4b58-99fa-37252919fd94' - всегда
+// onChange send 'd1396068-82b9-4b58-99fa-37252919fd94'
+
+// const filters = ['All', 'Active', 'Complited'];
+
+const filters = [{
+  id: 'd1396068-82b9-4b58-99fa-37252919fd94',
+  title: 'All',
+  selected: true
+}, {
+  id: '38653fdc-17b6-422c-937b-4fe2499fc0d3',
+  title: 'Active',
+  selected: false
+}, {
+  id: '38653fdc-17b6-422c-937b-4fe2499fc0d3',
+  title: 'Complited',
+  selected: false
+}];
+
+
+```
